@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Telharmonium Labs, Inc.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Music technology. A splash screen and teaser for Telharmonium Labs, Inc.">
+  <link rel="preload" as="image" href="tile_512.webp">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-512">
+  <main id="home">
+    <header class="hero">
+      <img
+        src="logo-combined.png"
+        alt="Telharmonium Labs, Inc."
+        class="logo"
+        width="1800" height="600"
+        decoding="async" loading="eager">
+
+      <h1 class="wordmark" aria-label="Telharmonium Labs, Inc.">
+        TELHARMONIUM&nbsp;LABS,&nbsp;INC.
+      </h1>
+
+      <p class="tag">Music technology · Vancouver · San Francisco</p>
+
+      <p class="signals">
+        <span class="label">Signals:&nbsp;</span>
+        <a class="cta" href="mailto:hello@telharmonium.ca">hello@telharmonium.ca</a>
+      </p>
+    </header>
+
+    <footer class="foot">
+      <small>© <span id="y"></span> Telharmonium Labs, Inc.</small>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
