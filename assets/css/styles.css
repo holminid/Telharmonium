@@ -22,10 +22,10 @@ body{
   padding-top:10vh;
 
   background-color: var(--indigo);
-  background-image: url("../img/background_full.png"); /* baseline */
+  background-image: url("/assets/img/background_full.png"); /* baseline */
   background-image: image-set(
-    url("../img/background_full.webp") type("image/webp") 1x,
-    url("../img/background_full.png")  type("image/png")  1x
+    url("/assets/img/background_full.webp") type("image/webp") 1x,
+    url("/assets/img/background_full.png")  type("image/png")  1x
   );
   background-repeat: no-repeat;
   background-size: cover;
@@ -48,10 +48,10 @@ body{
 /* iPhone PORTRAIT (small phones): seamless 512px tile */
 @media (orientation: portrait) and (max-width: 430px) and (hover: none) and (pointer: coarse) {
   body{
-    background-image: url("../img/tile512.png") !important; /* baseline */
+    background-image: url("/assets/img/tile512.png") !important; /* baseline */
     background-image: image-set(
-      url("../img/tile512.webp") type("image/webp") 1x,
-      url("../img/tile512.png")  type("image/png")  1x
+      url("/assets/img/tile512.webp") type("image/webp") 1x,
+      url("/assets/img/tile512.png")  type("image/png")  1x
     ) !important;
     background-repeat: repeat !important;
     background-size: auto !important;           /* crisp native tile size */
@@ -63,10 +63,10 @@ body{
 /* Large phones / iPad PORTRAIT: seamless 1024px tile */
 @media (orientation: portrait) and (min-width: 431px) and (hover: none) and (pointer: coarse) {
   body{
-    background-image: url("../img/tile1024.png") !important; /* baseline */
+    background-image: url("/assets/img/tile1024.png") !important; /* baseline */
     background-image: image-set(
-      url("../img/tile1024.webp") type("image/webp") 1x,
-      url("../img/tile1024.png")  type("image/png")  1x
+      url("/assets/img/tile1024.webp") type("image/webp") 1x,
+      url("/assets/img/tile1024.png")  type("image/png")  1x
     ) !important;
     background-repeat: repeat !important;
     background-size: auto !important;
