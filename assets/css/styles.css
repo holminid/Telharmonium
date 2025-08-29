@@ -9,15 +9,85 @@ html,body{
   font-family: Georgia, "Times New Roman", serif;
 }
 
+/* =========================================================
+   Background with WebP+PNG fallbacks + iOS fixes
+   ========================================================= */
+
+/* Default: desktop & iPad (full-bleed cover) */
 body{
   display:flex;
   align-items:flex-start;
   justify-content:center;
-  min-height:100vh;
+  min-height:100dvh;
   padding-top:10vh;
-  background: url("../img/background.png") top left repeat; /* your new pattern */
+
+  background-color: var(--indigo);
+  background-image: url("../img/background_full.png"); /* baseline */
+  background-image: image-set(
+    url("../img/background_full.webp") type("image/webp") 1x,
+    url("../img/background_full.png")  type("image/png")  1x
+  );
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+
   color:var(--ivory);
 }
+
+/* iOS/iPadOS Safari: disable 'fixed' to prevent missing bg */
+@supports (-webkit-overflow-scrolling: touch) {
+  body { background-attachment: scroll !important; }
+}
+
+/* Respect reduced-motion everywhere */
+@media (prefers-reduced-motion: reduce) {
+  body { background-attachment: scroll !important; }
+}
+
+/* iPhone PORTRAIT (small phones): seamless 512px tile */
+@media (orientation: portrait) and (max-width: 430px) and (hover: none) and (pointer: coarse) {
+  body{
+    background-image: url("../img/tile512.png") !important; /* baseline */
+    background-image: image-set(
+      url("../img/tile512.webp") type("image/webp") 1x,
+      url("../img/tile512.png")  type("image/png")  1x
+    ) !important;
+    background-repeat: repeat !important;
+    background-size: auto !important;           /* crisp native tile size */
+    background-position: top center !important;
+    background-attachment: scroll !important;
+  }
+}
+
+/* Large phones / iPad PORTRAIT: seamless 1024px tile */
+@media (orientation: portrait) and (min-width: 431px) and (hover: none) and (pointer: coarse) {
+  body{
+    background-image: url("../img/tile1024.png") !important; /* baseline */
+    background-image: image-set(
+      url("../img/tile1024.webp") type("image/webp") 1x,
+      url("../img/tile1024.png")  type("image/png")  1x
+    ) !important;
+    background-repeat: repeat !important;
+    background-size: auto !important;
+    background-position: top center !important;
+    background-attachment: scroll !important;
+  }
+}
+
+/* Small-device LANDSCAPE: keep cover */
+@media (orientation: landscape) and (max-width: 932px){
+  body{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: scroll;
+  }
+}
+
+/* =========================================================
+   Your existing layout & typography
+   ========================================================= */
 
 .viewport-center{
   text-align:center;
@@ -38,9 +108,9 @@ body{
   margin:1rem 0 0;
   font-weight:700;
   white-space:nowrap;                   /* don’t allow line break */
-  font-size:clamp(1.6rem, 4.8vw, 2.6rem); /* scales for mobile → desktop */
+  font-size:clamp(1.6rem, 4.8vw, 2.6rem);
   line-height:1.06;
-  letter-spacing:0.04em;                 /* less airy for mixed case */
+  letter-spacing:0.04em;
   color:var(--teal);
   -webkit-text-stroke:0.6px var(--gold);
   text-shadow:0 0 1px var(--gold);
@@ -51,7 +121,7 @@ body{
   margin:.4rem 0 0;
   font-style: oblique 12deg;
   font-weight:700;
-  font-size:clamp(1.1rem, 3.2vw, 2rem); /* narrower scaling */
+  font-size:clamp(1.1rem, 3.2vw, 2rem);
   letter-spacing:.06em;
   color:var(--cyan);
   -webkit-text-stroke:0.6px var(--rose);
@@ -75,11 +145,11 @@ body{
 .signup a:hover{
   color:var(--cyan);
   border-bottom-color:var(--cyan);
-  text-shadow:0 0 1px var(--cyan);   /* subtle minimal glow */
+  text-shadow:0 0 1px var(--cyan);
 }
 
 /* Responsive guard for extra-small phones */
 @media (max-width: 480px){
   .logo-combined{ max-width: 280px }
-  .brand{ letter-spacing:0.035em } /* a little tighter on tiny screens */
+  .brand{ letter-spacing:0.035em }
 }
