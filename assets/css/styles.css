@@ -22,10 +22,10 @@ body{
   padding-top:10vh;
 
   background-color: var(--indigo);
-  background-image: url("/assets/img/background_full.png"); /* baseline */
+  background-image: url("../img/background_full.png"); /* baseline */
   background-image: image-set(
-    url("/assets/img/background_full.webp") type("image/webp") 1x,
-    url("/assets/img/background_full.png")  type("image/png")  1x
+    url("../img/background_full.webp") type("image/webp") 1x,
+    url("../img/background_full.png")  type("image/png")  1x
   );
   background-repeat: no-repeat;
   background-size: cover;
@@ -48,13 +48,13 @@ body{
 /* iPhone PORTRAIT (small phones): seamless 512px tile */
 @media (orientation: portrait) and (max-width: 430px) and (hover: none) and (pointer: coarse) {
   body{
-    background-image: url("/assets/img/tile512.png") !important; /* baseline */
+    background-image: url("../img/tile512.png") !important; /* baseline */
     background-image: image-set(
-      url("/assets/img/tile512.webp") type("image/webp") 1x,
-      url("/assets/img/tile512.png")  type("image/png")  1x
+      url("../img/tile512.webp") type("image/webp") 1x,
+      url("../img/tile512.png")  type("image/png")  1x
     ) !important;
     background-repeat: repeat !important;
-    background-size: auto !important;           /* crisp native tile size */
+    background-size: auto !important;
     background-position: top center !important;
     background-attachment: scroll !important;
   }
@@ -63,10 +63,10 @@ body{
 /* Large phones / iPad PORTRAIT: seamless 1024px tile */
 @media (orientation: portrait) and (min-width: 431px) and (hover: none) and (pointer: coarse) {
   body{
-    background-image: url("/assets/img/tile1024.png") !important; /* baseline */
+    background-image: url("../img/tile1024.png") !important; /* baseline */
     background-image: image-set(
-      url("/assets/img/tile1024.webp") type("image/webp") 1x,
-      url("/assets/img/tile1024.png")  type("image/png")  1x
+      url("../img/tile1024.webp") type("image/webp") 1x,
+      url("../img/tile1024.png")  type("image/png")  1x
     ) !important;
     background-repeat: repeat !important;
     background-size: auto !important;
@@ -86,7 +86,7 @@ body{
 }
 
 /* =========================================================
-   Your existing layout & typography
+   Layout & typography
    ========================================================= */
 
 .viewport-center{
@@ -103,32 +103,35 @@ body{
   display:block;
 }
 
-/* Brand: keep on one line, responsive clamp sizing, tighter kerning */
+/* Brand (Telharmonium Labs, Inc.) */
 .brand{
   margin:1rem 0 0;
   font-weight:700;
-  white-space:nowrap;                   /* don’t allow line break */
+  white-space:nowrap;
   font-size:clamp(1.6rem, 4.8vw, 2.6rem);
   line-height:1.06;
-  letter-spacing:0.04em;
-  color:var(--teal);
-  -webkit-text-stroke:0.6px var(--gold);
-  text-shadow:0 0 1px var(--gold);
+  letter-spacing:0.025em;
+
+  color:var(--cyan);
+  -webkit-text-stroke:0.6px var(--rose);   /* same stroke width as tagline */
+  text-shadow:1px 1px 0 var(--cyan);       /* SE shadow (x=1px, y=1px) */
 }
 
-/* Tagline: oblique, slightly smaller clamp than brand */
+/* Tagline — smaller, same outline/shadow widths as brand */
 .tagline{
   margin:.4rem 0 0;
   font-style: oblique 12deg;
   font-weight:700;
-  font-size:clamp(1.1rem, 3.2vw, 2rem);
+  /* smaller than before to increase hierarchy */
+  font-size:clamp(0.95rem, 2.6vw, 1.6rem);
   letter-spacing:.06em;
+
   color:var(--cyan);
-  -webkit-text-stroke:0.6px var(--rose);
-  text-shadow:0 0 1px var(--rose);
+  -webkit-text-stroke:0.6px var(--rose);   /* match brand stroke width */
+  text-shadow:1px 1px 0 var(--cyan);       /* match brand SE shadow */
 }
 
-/* Signals CTA — gold default, cyan hover with subtle glow */
+/* Signals CTA */
 .signup{
   margin-top:1.4rem;
   font-size:.75rem;
@@ -151,5 +154,5 @@ body{
 /* Responsive guard for extra-small phones */
 @media (max-width: 480px){
   .logo-combined{ max-width: 280px }
-  .brand{ letter-spacing:0.035em }
+  .brand{ letter-spacing:0.02em }
 }
