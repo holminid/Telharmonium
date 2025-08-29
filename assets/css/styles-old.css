@@ -15,7 +15,7 @@ body{
   justify-content:center;
   min-height:100vh;
   padding-top:10vh;
-  background: url("../img/background.png") top left repeat; /* your new pattern */
+  background: url("../img/background.PNG") center center/cover no-repeat;
   color:var(--ivory);
 }
 
@@ -33,32 +33,31 @@ body{
   display:block;
 }
 
-/* Brand: keep on one line, responsive clamp sizing, tighter kerning */
+/* Headline upright with looser kerning */
 .brand{
   margin:1rem 0 0;
   font-weight:700;
-  white-space:nowrap;                   /* don’t allow line break */
-  font-size:clamp(1.6rem, 4.8vw, 2.6rem); /* scales for mobile → desktop */
+  font-size:clamp(1.6rem, 4.6vw, 2.6rem);
   line-height:1.06;
-  letter-spacing:0.04em;                 /* less airy for mixed case */
+  letter-spacing:0.08em;
   color:var(--teal);
   -webkit-text-stroke:0.6px var(--gold);
   text-shadow:0 0 1px var(--gold);
 }
 
-/* Tagline: oblique, slightly smaller clamp than brand */
+/* Tagline oblique only */
 .tagline{
   margin:.4rem 0 0;
   font-style: oblique 12deg;
   font-weight:700;
-  font-size:clamp(1.1rem, 3.2vw, 2rem); /* narrower scaling */
+  font-size:clamp(1.4rem, 4vw, 2.2rem);
   letter-spacing:.06em;
   color:var(--cyan);
   -webkit-text-stroke:0.6px var(--rose);
   text-shadow:0 0 1px var(--rose);
 }
 
-/* Signals CTA — gold default, cyan hover with subtle glow */
+/* Signals CTA — gold default, cyan on hover with subtle glow */
 .signup{
   margin-top:1.4rem;
   font-size:.75rem;
@@ -75,11 +74,11 @@ body{
 .signup a:hover{
   color:var(--cyan);
   border-bottom-color:var(--cyan);
-  text-shadow:0 0 1px var(--cyan);   /* subtle minimal glow */
+  text-shadow:0 0 1px var(--cyan);   /* subtle 1px glow */
 }
 
-/* Responsive guard for extra-small phones */
+/* Responsive guards */
 @media (max-width: 480px){
   .logo-combined{ max-width: 280px }
-  .brand{ letter-spacing:0.035em } /* a little tighter on tiny screens */
+  .brand{ letter-spacing:0.07em }
 }
