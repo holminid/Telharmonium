@@ -10,10 +10,10 @@ html,body{
 }
 
 /* =========================================================
-   Background with WebP+PNG fallbacks + iOS fixes
+   Background (tiling everywhere) + WebP/PNG fallbacks + iOS fixes
    ========================================================= */
 
-/* Default: desktop & iPad (full-bleed cover) */
+/* Default: desktop & iPad → use 1024px seamless tile */
 body{
   display:flex;
   align-items:flex-start;
@@ -22,33 +22,36 @@ body{
   padding-top:10vh;
 
   background-color: var(--indigo);
-  background-image: url("../img/background_full.png"); /* baseline */
+
+  /* Baseline PNG, then WebP+PNG via image-set */
+  background-image: url("../img/tile1024.png");
   background-image: image-set(
-    url("../img/background_full.webp") type("image/webp") 1x,
-    url("../img/background_full.png")  type("image/png")  1x
+    url("../img/tile1024.webp") type("image/webp") 1x,
+    url("../img/tile1024.png")  type("image/png")  1x
   );
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center top;
-  background-attachment: fixed;
+
+  background-repeat: repeat;
+  background-size: auto;            /* keep native tile size for crispness */
+  background-position: top center;
+  background-attachment: scroll;    /* parallax off; tiles look cleaner */
 
   color:var(--ivory);
 }
 
-/* iOS/iPadOS Safari: disable 'fixed' to prevent missing bg */
+/* iOS/iPadOS: belt-and-suspenders—force scroll */
 @supports (-webkit-overflow-scrolling: touch) {
   body { background-attachment: scroll !important; }
 }
 
-/* Respect reduced-motion everywhere */
+/* Respect reduced motion (no change, just explicit) */
 @media (prefers-reduced-motion: reduce) {
   body { background-attachment: scroll !important; }
 }
 
-/* iPhone PORTRAIT (small phones): seamless 512px tile */
+/* iPhone PORTRAIT (small phones): 512px tile */
 @media (orientation: portrait) and (max-width: 430px) and (hover: none) and (pointer: coarse) {
   body{
-    background-image: url("../img/tile512.png") !important; /* baseline */
+    background-image: url("../img/tile512.png") !important;
     background-image: image-set(
       url("../img/tile512.webp") type("image/webp") 1x,
       url("../img/tile512.png")  type("image/png")  1x
@@ -56,14 +59,13 @@ body{
     background-repeat: repeat !important;
     background-size: auto !important;
     background-position: top center !important;
-    background-attachment: scroll !important;
   }
 }
 
 /* Large phones / iPad PORTRAIT: seamless 1024px tile */
 @media (orientation: portrait) and (min-width: 431px) and (hover: none) and (pointer: coarse) {
   body{
-    background-image: url("../img/tile1024.png") !important; /* baseline */
+    background-image: url("../img/tile1024.png") !important;
     background-image: image-set(
       url("../img/tile1024.webp") type("image/webp") 1x,
       url("../img/tile1024.png")  type("image/png")  1x
@@ -71,17 +73,15 @@ body{
     background-repeat: repeat !important;
     background-size: auto !important;
     background-position: top center !important;
-    background-attachment: scroll !important;
   }
 }
 
-/* Small-device LANDSCAPE: keep cover */
+/* Small-device LANDSCAPE: keep tiling (do NOT override to cover) */
 @media (orientation: landscape) and (max-width: 932px){
   body{
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    background-attachment: scroll;
+    background-repeat: repeat;
+    background-size: auto;
+    background-position: top center;
   }
 }
 
