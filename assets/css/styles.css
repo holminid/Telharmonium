@@ -234,3 +234,44 @@ body{
 
 /* 5) Remove the blue fallback so you don't see it during load/rotate */
 body{ background-color: transparent !important; }
+/* ==== iPhone mini & small-device centering + scaling ==== */
+@media (max-width: 375px){
+
+  /* Logo — force true center and avoid subpixel drift */
+  .logo-combined{
+    display: block;
+    margin-inline: auto;
+    place-self: center;
+    max-width: 220px;    /* smaller than before for optical balance */
+    width: 220px;
+  }
+
+  /* Brand — shrink so it never wraps */
+  .brand{
+    font-size: clamp(1.1rem, 4.8vw, 1.8rem); /* smaller cap than desktop */
+    letter-spacing: 0.018em;
+    white-space: nowrap !important;         /* force single line */
+    text-align: center;
+  }
+
+  /* Tagline — keep size, just enforce center */
+  .tagline{
+    font-size: clamp(0.9rem, 3vw, 1.3rem);  /* similar to before */
+    white-space: nowrap !important;
+    text-align: center;
+  }
+
+  /* Ensure gutters so text doesn’t hug edges */
+  .viewport-center{
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* Email line stays centered */
+  .signup{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+  }
+}
