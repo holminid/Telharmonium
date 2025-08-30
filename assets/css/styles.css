@@ -275,3 +275,13 @@ body{ background-color: transparent !important; }
     text-align: center;
   }
 }
+/* ==== iPhone mini centering corrections ==== */
+@media (max-width: 375px){
+  .viewport-center{
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .logo-combined{
+    transform: translateX(-2px); /* shift left slightly to compensate image padding */
+  }
+}
