@@ -9,145 +9,138 @@ html,body{
   font-family: Georgia, "Times New Roman", serif;
 }
 
-/* =========================================================
-   Background — Hybrid tiling for crispness across devices
-   ========================================================= */
-
-/* Base: desktop & iPad → 1024px tile */
+/* Make footer placement deterministic */
 body{
+  min-height:100vh;
   display:flex;
-  align-items:flex-start;
-  justify-content:center;
-  min-height:100dvh;
-  padding-top:10vh;
+  flex-direction:column;
+  align-items:center;
 
-  background-color: var(--indigo);
-
-  background-image: url("../img/tile1024.png");
-  background-image: image-set(
-    url("../img/tile1024.webp") type("image/webp") 1x,
-    url("../img/tile1024.png")  type("image/png")  1x
-  );
-
+  /* background pattern */
+  background-image: url("../img/background.png");
   background-repeat: repeat;
-  background-size: 640px 640px;        /* balanced default */
-  background-position: top center;
-  background-attachment: scroll;
+  background-position: top left;
+  background-size: auto;
 
-  color: var(--ivory);
+  color:var(--ivory);
 }
 
-/* iOS/iPadOS fix */
-@supports (-webkit-overflow-scrolling: touch) {
-  body { background-attachment: scroll; }
-}
-
-/* HiDPI: make tiles smaller for sharpness */
-@media (min-resolution: 2dppx) {
-  body { background-size: 512px 512px; }
-}
-
-/* Very large desktops: enlarge tiles to reduce busyness */
-@media (min-width: 1600px) {
-  body { background-size: 768px 768px; }
-}
-@media (min-width: 2200px) {
-  body { background-size: 896px 896px; }
-}
-
-/* Small iPhones — PORTRAIT: 512px tile rendered smaller */
-@media (orientation: portrait) and (max-width: 430px) and (hover: none) and (pointer: coarse) {
-  body{
-    background-image: url("../img/tile512.png");
-    background-image: image-set(
-      url("../img/tile512.webp") type("image/webp") 1x,
-      url("../img/tile512.png")  type("image/png")  1x
-    );
-    background-repeat: repeat;
-    background-size: 256px 256px;
-    background-position: top center;
-  }
-}
-
-/* Large phones / iPad PORTRAIT: 1024px tile, scaled appropriately */
-@media (orientation: portrait) and (min-width: 431px) and (hover: none) and (pointer: coarse) {
-  body{
-    background-image: url("../img/tile1024.png");
-    background-image: image-set(
-      url("../img/tile1024.webp") type("image/webp") 1x,
-      url("../img/tile1024.png")  type("image/png")  1x
-    );
-    background-repeat: repeat;
-    background-size: 512px 512px;      /* crisp size for portrait tablets/large phones */
-    background-position: top center;
-  }
-}
-
-/* Small-device LANDSCAPE */
-@media (orientation: landscape) and (max-width: 932px) {
-  body{
-    background-repeat: repeat;
-    background-size: 320px 320px;
-    background-position: top center;
-  }
-}
-
-/* =========================================================
-   Layout & typography
-   ========================================================= */
-
+/* Main content area sits higher, like before */
 .viewport-center{
+  width:100%;
   text-align:center;
   padding:2rem;
-  width:100%;
+  padding-top:10vh;
+  flex: 1 0 auto;
 }
 
-/* Logo: slightly bigger */
+/* Logo */
 .logo-combined{
-  max-width:min(80vw, 460px);
+  max-width:min(82vw, 500px);
   height:auto;
-  margin:0 auto 1rem;
+  margin:0 auto 1.1rem;
   display:block;
 }
 
-/* Brand (Telharmonium Labs, Inc.) */
+.main-text-box{
+  width:min(90vw, 680px);
+  margin:0 auto 1.4rem;
+  padding:1rem 1.2rem;
+  background:#1B2A3C;
+  color:#F5F0E6;
+  border:1px solid rgba(245,240,230,0.18);
+  border-radius:10px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.2);
+  text-align:left;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+}
+
+.main-text-box-title{
+  margin:0 0 0.8rem;
+  font-size:clamp(1.05rem, 2vw, 1.35rem);
+  line-height:1.2;
+  color:#F5F0E6;
+}
+
+.main-text-box p{
+  margin:0;
+  font-size:clamp(0.95rem, 1.8vw, 1.05rem);
+  line-height:1.5;
+}
+
+.main-text-box p + p{
+  margin-top:0.9rem;
+}
+
+.main-copy-image{
+  margin:1rem 0 0.1rem;
+}
+
+.main-copy-image img{
+  display:block;
+  width:min(100%, 220px);
+  height:auto;
+  margin:0 auto;
+}
+
+.main-text-box-tail{
+  margin-top:1.1rem;
+  padding-top:0.95rem;
+  border-top:1px solid rgba(245,240,230,0.2);
+}
+
+.main-text-box-tail p{
+  font-size:clamp(0.9rem, 1.6vw, 0.98rem);
+  line-height:1.45;
+  color:rgba(245,240,230,0.96);
+  font-style:italic;
+}
+
+.main-text-box-tail .support-credit{
+  margin-top:1rem;
+  font-style:normal;
+  color:#F5F0E6;
+  font-size:clamp(0.72rem, 1.2vw, 0.82rem);
+  line-height:1.35;
+}
+
+.main-text-box-tail .support-credit strong{
+  font-weight:700;
+}
+
+/* Brand */
 .brand{
-  margin:1rem 0 0;
+  margin:0.8rem 0 0;
   font-weight:700;
   white-space:nowrap;
-  font-size:clamp(1.6rem, 4.8vw, 2.6rem);
-  line-height:1.06;
-  letter-spacing:0.025em;
-
-  color:var(--cyan);
-  -webkit-text-stroke:0.6px var(--rose);
-  /* no text-shadow here — clean outline only */
+  font-size:clamp(1.55rem, 4.2vw, 3.25rem);
+  line-height:1.03;
+  letter-spacing:0.01em;
+  color:#1B2A3C;
+  -webkit-text-stroke:0.45px rgba(244,185,195,0.95);
+  text-shadow:
+    1.6px 1.6px 0 rgba(115, 208, 231, 0.95),
+    0 0 1px rgba(244,185,195,0.8);
 }
 
-/* Tagline: small caps with exception spans, rose outline + cyan shadow */
+/* Tagline */
 .tagline{
-  margin:.4rem 0 0;
-  font-style: oblique 12deg;
-  font-weight: 400;                          /* non-bold */
-  font-size: clamp(0.9rem, 3vw, 1.3rem);     /* responsive but smaller than brand */
-  letter-spacing: .08em;
-
-  color: var(--cyan);                        /* fill */
-  -webkit-text-stroke: 0.6px var(--rose);    /* rose outline */
-  text-shadow: 1px 1px 0 var(--cyan);        /* subtle SE cyan shadow */
-
-  font-variant: small-caps;                  /* enable small caps */
-  text-align: center;
-  white-space: nowrap;
+  margin:.55rem 0 0.9rem;
+  font-style: italic;
+  font-weight:700;
+  white-space:nowrap;
+  font-size:clamp(0.9rem, 1.9vw, 1.45rem);
+  letter-spacing:.03em;
+  color:#1B2A3C;
+  -webkit-text-stroke:0.3px rgba(244,185,195,0.9);
+  text-shadow:
+    1.2px 1.2px 0 rgba(115, 208, 231, 0.95),
+    0 0 1px rgba(244,185,195,0.75);
 }
 
-/* Exception span: keep normal lowercase inside tagline */
-.tagline .sc-exception{
-  font-variant: normal; 
-  text-transform: lowercase;
-}
-
-/* Signals CTA */
+/* CTA */
 .signup{
   margin-top:1.4rem;
   font-size:.75rem;
@@ -167,101 +160,30 @@ body{
   text-shadow:0 0 1px var(--cyan);
 }
 
-/* Responsive guard for extra-small phones */
+/* Footer: small, understated */
+.site-footer{
+  flex: 0 0 auto;
+  width:100%;
+  text-align:center;
+  padding:0.9rem 1.25rem 1.1rem;
+  font-size:0.72rem;
+  letter-spacing:0.02em;
+  color: rgba(245,240,230,.78);
+}
+
 @media (max-width: 480px){
-  .logo-combined{ max-width: 280px }
-  .brand{ letter-spacing:0.02em }
-}
-/* ==== Centering fixes (desktop + small iPhones) ==== */
-
-/* ==== Centering + iPhone mini (≤375px) — FINAL CONSOLIDATED ==== */
-
-/* Desktop & general: truly center the main column + its contents */
-.viewport-center{
-  margin-left: auto;
-  margin-right: auto;
-  max-width: min(92vw, 640px);
-  display: grid;
-  justify-items: center;
-  text-align: center;
-}
-
-/* Email line: belt-and-suspenders centering */
-.signup{
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  text-align: center;
-}
-
-/* iPhone 12 mini & similar (≤375px) */
-@media (max-width: 375px){
-
-  /* Logo — true center + small optical nudge left */
-  .logo-combined{
-    display: block;
-    margin-inline: auto;
-    place-self: center;
-    max-width: 220px;   /* even number to avoid half-pixel rounding */
-    width: 220px;
-    transform: translateX(-2px); /* optical correction for image padding */
+  .logo-combined{ max-width: 280px; }
+  .main-text-box{
+    padding:0.9rem 1rem;
+    border-radius:8px;
   }
-
-  /* Brand — shrink to always fit one line, keep centered */
   .brand{
-    font-size: clamp(1.1rem, 4.8vw, 1.8rem);
-    letter-spacing: 0.018em;
-    white-space: nowrap !important;
-    text-align: center;
+    white-space:normal;
+    line-height:1.08;
   }
-
- /* Tagline: ALL small caps (no oversized first letters) */
-.tagline{
-  margin:.4rem 0 0;
-  font-style: oblique 12deg;
-  font-weight: 400;                          /* non-bold */
-  font-size: clamp(0.9rem, 3vw, 1.3rem);     /* responsive but smaller than brand */
-  letter-spacing: .08em;
-
-color: var(--cyan);
-  /* -webkit-text-stroke: 0.6px var(--rose); */   /* disabled outline */
-  text-shadow: 1px 1px 0 var(--cyan);
-
-  font-variant: all-small-caps;              /* every letter in small caps */
-  text-align: center;
-  white-space: nowrap;
-}
-
-  /* Keep the column tight so text doesn’t hug the edges */
-  .viewport-center{
-    padding-left: 0;
-    padding-right: 0;
+  .tagline{
+    white-space:normal;
+    margin-bottom:0.8rem;
   }
-}
-/* — Email line: center by content width (desktop + mobile) — */
-.signup{
-  display: inline-block !important;    /* shrink to content width */
-  margin: 1.4rem auto 0 !important;    /* horizontally center the block */
-  width: auto !important;
-  text-align: center !important;       /* keep the text centered inside */
-}
-
-/* keep the link styling as-is; no change needed */
-/* Style the 'Signals:' label so it’s visible */
-.signup{
-  color: var(--gold);              /* make the label gold like the link */
-  font-weight: 400;                /* optional: lighter than the brand */
-}
-
-/* Keep the link overriding its own color & hover */
-.signup a{
-  color: var(--gold);
-  text-decoration: none;
-  border-bottom: 1px dotted var(--gold);
-  transition: all 0.25s ease;
-}
-.signup a:hover{
-  color: var(--cyan);
-  border-bottom-color: var(--cyan);
-  text-shadow: 0 0 1px var(--cyan);
+  .site-footer{ font-size:0.68rem; }
 }
