@@ -72,7 +72,7 @@ body{
 }
 
 .main-copy-image{
-  margin:2.2rem 0 1.5rem;
+  margin:2.2rem 0 2.2rem;
 }
 
 .main-copy-image img{
@@ -80,6 +80,27 @@ body{
   width:min(100%, 220px);
   height:auto;
   margin:0 auto;
+}
+
+.main-copy-image-link{
+  margin-top:1.4rem;
+  text-align:center;
+}
+.main-copy-image-link a{
+  display:inline-block;
+  font:700 0.75rem/1.35 Arial, Helvetica, sans-serif;
+  letter-spacing:0.16em;
+  text-decoration:none;
+  color:#FEF61B;
+  border-bottom:1px solid transparent;
+  padding:0.2rem 0.3rem;
+}
+.main-copy-image-link a:hover{
+  border-bottom-color:#FEF61B;
+}
+.main-copy-image-link a:focus-visible{
+  outline:2px solid #73D0E7;
+  outline-offset:3px;
 }
 
 .main-text-box-tail{
