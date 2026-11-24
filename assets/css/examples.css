@@ -81,6 +81,7 @@ a:focus-visible, audio:focus-visible { outline: 2px solid var(--signal-yellow); 
 .examples-note { background: transparent; color: var(--ink); margin-top: 28px; padding: 0; border: 0; border-radius: 0; text-align: center; }
 .examples-note h2 { margin: 0 0 6px; font: 700 .8rem/1.4 Arial, Helvetica, sans-serif; letter-spacing: .06em; text-transform: uppercase; }
 .examples-note p { margin: 0 auto; max-width: 90ch; font-size: .9rem; line-height: 1.5; color: var(--ink); text-align: center; }
+.examples-note p:not(.examples-note-contact) { text-align: justify; hyphens: auto; }
 .examples-note .examples-note-contact { margin-top: 1.2rem; font: .8rem/1.4 Arial, Helvetica, sans-serif; }
 .examples-note-contact a { color: #1B2A3C; text-decoration: underline; text-underline-offset: 3px; }
 .examples-note-contact a:hover { color: #4D6F73; }
@@ -114,5 +115,6 @@ a:focus-visible, audio:focus-visible { outline: 2px solid var(--signal-yellow); 
   .examples-grid { grid-template-columns: 1fr; }
   .example-card { min-height: 250px; }
   .examples-section-heading { align-items: flex-start; flex-direction: column; }
+  .examples-note p:not(.examples-note-contact) { text-align: left; hyphens: none; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
