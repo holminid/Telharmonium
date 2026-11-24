@@ -54,7 +54,7 @@ a:focus-visible, audio:focus-visible { outline: 2px solid var(--signal-yellow); 
 .examples-home-link:focus-visible { outline: 2px solid var(--signal-yellow); outline-offset: 5px; }
 .examples-intro { background: var(--ink); color: var(--paper); padding: clamp(25px, 4.3vw, 47px); border-radius: 8px; margin-top: 28px; }
 .examples-intro h1 { margin: 0 0 15px; font-size: clamp(1.8rem, 3vw, 2.3rem); font-weight: 400; letter-spacing: -.018em; line-height: 1.13; }
-.examples-intro p:not(.eyebrow) { max-width: 78ch; font-size: clamp(.95rem, 1.45vw, 1.08rem); line-height: 1.56; margin: 0 0 11px; color: var(--paper); }
+.examples-intro p:not(.eyebrow) { max-width: 100%; font-size: clamp(.95rem, 1.45vw, 1.08rem); line-height: 1.56; margin: 0 0 11px; color: var(--paper); }
 .examples-intro p:last-child { margin-bottom: 0; }
 .examples-intro .examples-ingress { font-size: clamp(1.07rem, 1.7vw, 1.21rem); line-height: 1.46; font-style: italic; margin-bottom: 20px; }
 .examples-intro p:not(.eyebrow):not(.examples-ingress) + p:not(.eyebrow) { margin-top: 15px; }
@@ -71,16 +71,19 @@ a:focus-visible, audio:focus-visible { outline: 2px solid var(--signal-yellow); 
 .example-year { font-variant-numeric: tabular-nums; color: var(--signal-yellow); letter-spacing: .06em; }
 .example-family { color: var(--muted); text-transform: uppercase; font-size: .67rem; letter-spacing: .08em; text-align: left; }
 .example-title { margin: 0 0 11px; font-size: clamp(1.45rem, 2.3vw, 1.95rem); line-height: 1.15; font-weight: 400; }
-.example-description { margin: 0 0 18px; font-size: .94rem; line-height: 1.52; color: var(--body-muted); max-width: 48ch; }
+.example-description { margin: 0 0 18px; font-size: .94rem; line-height: 1.52; color: var(--body-muted); max-width: 100%; }
 .example-audio-wrap { margin-top: auto; }
 .example-audio-label { display: block; margin: 0 0 8px; color: var(--signal-yellow); font: 700 .7rem/1.2 Arial, Helvetica, sans-serif; text-transform: uppercase; letter-spacing: .09em; }
 .example-card audio { display: block; width: 100%; height: 42px; color-scheme: light; }
 .example-card--planned { background: #263544; border-style: dashed; border-color: rgba(245,240,230,.32); }
 .example-card--planned .example-audio-label { color: var(--muted); }
 .example-planned-state { font: .82rem/1.45 Arial, Helvetica, sans-serif; color: var(--body-muted); border-top: 1px solid rgba(245,240,230,.16); padding-top: 12px; }
-.examples-note { background: transparent; color: var(--ink); margin-top: 28px; padding: 0; border: 0; border-radius: 0; }
+.examples-note { background: transparent; color: var(--ink); margin-top: 28px; padding: 0; border: 0; border-radius: 0; text-align: center; }
 .examples-note h2 { margin: 0 0 6px; font: 700 .8rem/1.4 Arial, Helvetica, sans-serif; letter-spacing: .06em; text-transform: uppercase; }
-.examples-note p { margin: 0; max-width: 90ch; font-size: .9rem; line-height: 1.5; color: var(--ink); }
+.examples-note p { margin: 0 auto; max-width: 90ch; font-size: .9rem; line-height: 1.5; color: var(--ink); text-align: center; }
+.examples-note .examples-note-contact { margin-top: 1.2rem; font: .8rem/1.4 Arial, Helvetica, sans-serif; }
+.examples-note-contact a { color: #1B2A3C; text-decoration: underline; text-underline-offset: 3px; }
+.examples-note-contact a:hover { color: #4D6F73; }
 /* The homepage's centered Signals contact treatment. */
 .examples-footer { text-align: center; padding: 0 0 12px; }
 .signup { margin: 1.4rem 0 0; font-size: .75rem; display: flex; justify-content: center; width: 100%; }
